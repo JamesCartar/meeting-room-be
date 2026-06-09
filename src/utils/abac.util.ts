@@ -64,6 +64,10 @@ export const assertCanAccess = (
 	resource: AccessResource = {},
 ) => {
 	if (!actor || !canAccess(actor, action, resource)) {
-		throw new UnauthenticatedError("Not authorized to perform this action", 803, 403);
+		throw new UnauthenticatedError(
+			"Not authorized to perform this action",
+			803,
+			403,
+		);
 	}
 };

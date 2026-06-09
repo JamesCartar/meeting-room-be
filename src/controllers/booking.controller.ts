@@ -25,16 +25,6 @@ class BookingController {
 		const data = await this.bookingService.delete(req, session);
 		return successResponse(res, "Booking deleted successfully", data);
 	}
-
-	async getGroupedByUser(req: Request, res: Response) {
-		const data = await this.bookingService.getGroupedByUser(req);
-		return successResponse(res, "Get bookings grouped by user successfully", data);
-	}
-
-	async getUsageSummary(req: Request, res: Response) {
-		const data = await this.bookingService.getUsageSummary(req);
-		return successResponse(res, "Get booking usage summary successfully", data);
-	}
 }
 
 export default BookingController;

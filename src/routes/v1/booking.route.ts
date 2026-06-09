@@ -35,43 +35,18 @@ router
 		controllerAsyncHandler((req, res) => bookingController.getAll(req, res)),
 	]);
 
-router.get(
-	"/grouped-by-user",
-	[
-		requireAccess("booking:summary"),
-		controllerAsyncHandler((req, res) =>
-			bookingController.getGroupedByUser(req, res),
-		),
-	],
-);
-
-router.get(
-	"/summary",
-	[
-		requireAccess("booking:summary"),
-		controllerAsyncHandler((req, res) =>
-			bookingController.getUsageSummary(req, res),
-		),
-	],
-);
-
-router.delete(
-	"/:id",
-	[
+router
+	.route("/:id")
+	.delete([
 		validateParamId("id"),
 		controllerAsyncHandlerWithTx((req, res, session) =>
 			bookingController.delete(req, res, session),
 		),
-	],
-);
-
-router.get(
-	"/:id",
-	[
+	])
+	.get([
 		requireAccess("booking:read"),
 		validateParamId("id"),
 		controllerAsyncHandler((req, res) => bookingController.getSingle(req, res)),
-	],
-);
+	]);
 
 export default router;

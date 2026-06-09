@@ -5,7 +5,7 @@ import { requireAccess } from "@middlewares/abac.middleware";
 import {
 	controllerAsyncHandler,
 	controllerAsyncHandlerWithTx,
-} from "@middlewares/handlers/controllerAsync.handler";  
+} from "@middlewares/handlers/controllerAsync.handler";
 import AdminRepository from "@repositories/admin.repository";
 import BookingRepository from "@repositories/booking.repository";
 import AdminService from "@services/admin.service";
@@ -30,9 +30,7 @@ router
 	.post([
 		requireAccess("user:create"),
 		validateBody(AdminCreateSchema),
-		controllerAsyncHandler((req, res) =>
-			adminController.create(req, res),
-		),
+		controllerAsyncHandler((req, res) => adminController.create(req, res)),
 	])
 	.get([
 		requireAccess("user:read"),
@@ -52,9 +50,7 @@ router
 
 router
 	.route("/me")
-	.get([
-		controllerAsyncHandler((req, res) => adminController.getMe(req, res)),
-	]);
+	.get([controllerAsyncHandler((req, res) => adminController.getMe(req, res))]);
 
 router
 	.route("/names")

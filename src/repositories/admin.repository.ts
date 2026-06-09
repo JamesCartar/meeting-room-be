@@ -7,7 +7,7 @@ import type {
 	AdminCreateInput,
 	AdminUpdateInput,
 } from "@validators/schemas/admin.schema";
-import { Types, type ClientSession, type QueryFilter } from "mongoose";
+import { type ClientSession, type QueryFilter, Types } from "mongoose";
 
 const castAdminAggregateFilters = (
 	filters: QueryFilter<AdminSchemaType>,
@@ -29,7 +29,7 @@ const castAdminAggregateFilters = (
 
 class AdminRepository {
 	async create(data: AdminCreateInput) {
-		const admin = await Admin.create(data); 
+		const admin = await Admin.create(data);
 		return admin;
 	}
 	async getAll(filters: QueryFilter<AdminSchemaType>, pagination: Pagination) {
@@ -113,7 +113,7 @@ class AdminRepository {
 		return admin;
 	}
 	async getByEmail(email: string) {
-		const admin = await Admin.findOne({ email }, { __v: 0, updatedAt: 0, })
+		const admin = await Admin.findOne({ email }, { __v: 0, updatedAt: 0 })
 			.populate({ path: "role", select: "_id name" })
 			.lean();
 		return admin;

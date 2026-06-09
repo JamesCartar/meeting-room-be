@@ -54,7 +54,10 @@ class BookingService {
 			new BadRequestError("Pagination data is missing"),
 		);
 
-		const bookings = await this.bookingRepository.getAll(filters, paginationInput);
+		const bookings = await this.bookingRepository.getAll(
+			filters,
+			paginationInput,
+		);
 		const totalCount = await this.bookingRepository.getCount(filters);
 		const pagination = generatePagination(
 			bookings.length,
@@ -98,20 +101,6 @@ class BookingService {
 		if (!booking) throw new NotFoundError();
 
 		return { _id: booking._id.toString() };
-	}
-
-	async getGroupedByUser(req: Request) {
-		assertCanAccess(req.actor, "booking:summary");
-
-		const groups = await this.bookingRepository.getGroupedByUser();
-		return { groups };
-	}
-
-	async getUsageSummary(req: Request) {
-		assertCanAccess(req.actor, "booking:summary");
-
-		const summary = await this.bookingRepository.getUsageSummary();
-		return { summary };
 	}
 }
 

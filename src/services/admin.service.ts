@@ -1,11 +1,11 @@
-import { assertDefined } from "@helpers/assertDefined.helper"; 
+import { assertDefined } from "@helpers/assertDefined.helper";
 import {
 	BadRequestError,
 	NotFoundError,
 	UnauthenticatedError,
 } from "@helpers/errors";
-import { generatePagination } from "@helpers/generatePagination.helper"; 
-import type AdminRepository from "@repositories/admin.repository"; 
+import { generatePagination } from "@helpers/generatePagination.helper";
+import type AdminRepository from "@repositories/admin.repository";
 import type BookingRepository from "@repositories/booking.repository";
 import { buildAdminFilter } from "@utils/filters/admin.filter";
 import { comparePassword } from "@utils/password.util";
@@ -20,7 +20,7 @@ class AdminService {
 	) {}
 
 	async create(req: Request) {
-		const { body  } = req;
+		const { body } = req;
 
 		const admin = await this.adminRepository.create(body);
 		if (!admin) throw new BadRequestError("Admin creation not successful");

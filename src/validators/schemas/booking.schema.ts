@@ -16,8 +16,7 @@ export const BookingCreateSchema = z
 	});
 
 export const BookingUpdateSchema = BookingCreateSchema.partial().refine(
-	(data) =>
-		!data.startTime || !data.endTime || data.startTime < data.endTime,
+	(data) => !data.startTime || !data.endTime || data.startTime < data.endTime,
 	{
 		message: "startTime must be before endTime",
 		path: ["endTime"],

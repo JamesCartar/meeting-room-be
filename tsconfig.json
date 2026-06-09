@@ -26,12 +26,9 @@
 			"@helpers/*": ["./src/helpers/*"],
 			"@customTypes/*": ["./src/types/*"],
 			"@common/*": ["./src/common/*"],
-			"@config/*": ["./src/config/*"], 
+			"@config/*": ["./src/config/*"]
 		}
 	},
 	"include": ["**/*.ts"],
-	"exclude": [
-		"dist",
-		"node_modules"
-	]
+	"exclude": ["dist", "node_modules"]
 }

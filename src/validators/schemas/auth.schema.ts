@@ -1,8 +1,7 @@
 import z from "zod";
 
 export const loginSchema = z.object({
-	email: z.email({ message: "Invalid email format" })
-		.trim(),
+	email: z.email({ message: "Invalid email format" }).trim(),
 	password: z
 		.string({ message: "Password must be a string" })
 		.trim()

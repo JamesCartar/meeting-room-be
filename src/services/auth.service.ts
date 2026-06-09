@@ -1,15 +1,11 @@
 import { NotFoundError, UnauthenticatedError } from "@helpers/errors";
-import type AdminRepository from "@repositories/admin.repository"; 
-import { generateToken } from "@utils/jwt.util"; 
+import type AdminRepository from "@repositories/admin.repository";
+import { generateToken } from "@utils/jwt.util";
 import { comparePassword } from "@utils/password.util";
 import type { Request } from "express";
 
- 
-
 class AuthService {
-	constructor(
-		private readonly adminRepository: AdminRepository, 
-	) {}
+	constructor(private readonly adminRepository: AdminRepository) {}
 
 	async login(req: Request) {
 		const { email, password } = req.body;
@@ -33,14 +29,12 @@ class AuthService {
 			role: admin.role._id.toString(),
 		};
 		const jwt = generateToken(payload);
- 
 
 		const { password: _hashedPassword, ...adminWithoutPassword } = admin;
 
 		const response = { admin: adminWithoutPassword, jwt };
 		return response;
 	}
- 
 }
 
 export default AuthService;

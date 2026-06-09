@@ -1,4 +1,4 @@
-import { assertCanAccess, type AccessAction } from "@utils/abac.util";
+import { type AccessAction, assertCanAccess } from "@utils/abac.util";
 import type { RequestHandler } from "express";
 
 export const requireAccess = (action: AccessAction): RequestHandler => {

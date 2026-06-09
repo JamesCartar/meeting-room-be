@@ -18,7 +18,6 @@ export const logActionSchema = z.enum(
 		error: "Invalid log action",
 	},
 );
- 
 
 export const PaginationSchema = z.object({
 	page: z
@@ -50,7 +49,7 @@ export const BaseFilterQuerySchema = z.object({
 });
 
 export type UserStatus = z.infer<typeof userStatusSchema>;
-export type RoleType = z.infer<typeof roleTypeSchema>; 
+export type RoleType = z.infer<typeof roleTypeSchema>;
 export type LogAction = z.infer<typeof logActionSchema>;
 
 export type Pagination = z.infer<typeof PaginationSchema>;

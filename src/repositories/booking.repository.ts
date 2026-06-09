@@ -12,7 +12,10 @@ class BookingRepository {
 		return booking;
 	}
 
-	async getAll(filters: QueryFilter<BookingSchemaType>, pagination: Pagination) {
+	async getAll(
+		filters: QueryFilter<BookingSchemaType>,
+		pagination: Pagination,
+	) {
 		const bookings = await Booking.find(filters, { updatedAt: 0, __v: 0 })
 			.populate({ path: "user", select: "_id name role" })
 			.sort({ startTime: "ascending" })
@@ -57,7 +60,10 @@ class BookingRepository {
 		return booking;
 	}
 
-	async deleteManyByUser(user: string | Types.ObjectId, session: ClientSession) {
+	async deleteManyByUser(
+		user: string | Types.ObjectId,
+		session: ClientSession,
+	) {
 		const result = await Booking.deleteMany({ user }, { session });
 		return result;
 	}
@@ -77,7 +83,13 @@ class BookingRepository {
 			{
 				$group: {
 					_id: "$user",
-					user: { $first: { _id: "$user._id", name: "$user.name", role: "$user.role" } },
+					user: {
+						$first: {
+							_id: "$user._id",
+							name: "$user.name",
+							role: "$user.role",
+						},
+					},
 					bookings: {
 						$push: {
 							_id: "$_id",
