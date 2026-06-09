@@ -1,0 +1,37 @@
+{
+	"compilerOptions": {
+		"types": ["jest", "node"],
+		"target": "es2022",
+		"module": "NodeNext",
+		"rootDir": "./",
+		"outDir": "./dist",
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"allowJs": true,
+		"typeRoots": ["./src/types", "./node_modules/@types"],
+		"sourceMap": true,
+		"isolatedModules": true,
+		"skipLibCheck": true,
+		"paths": {
+			"@controllers/*": ["./src/controllers/*"],
+			"@services/*": ["./src/services/*"],
+			"@repositories/*": ["./src/repositories/*"],
+			"@routes/*": ["./src/routes/*"],
+			"@validators/*": ["./src/validators/*"],
+			"@utils/*": ["./src/utils/*"],
+			"@db/*": ["./src/db/*"],
+			"@middlewares/*": ["./src/middlewares/*"],
+			"@helpers/*": ["./src/helpers/*"],
+			"@customTypes/*": ["./src/types/*"],
+			"@common/*": ["./src/common/*"],
+			"@config/*": ["./src/config/*"], 
+		}
+	},
+	"include": ["**/*.ts"],
+	"exclude": [
+		"dist",
+		"node_modules"
+	]
+}
