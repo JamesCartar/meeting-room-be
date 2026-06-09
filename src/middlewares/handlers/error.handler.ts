@@ -1,4 +1,3 @@
-import { env } from "@config/env.config";
 import { HttpError } from "@helpers/errors/http.error";
 import { errorResponse } from "@helpers/response.helper";
 import type {
@@ -7,8 +6,7 @@ import type {
 	Request,
 	Response,
 } from "express";
-import type mongoose from "mongoose";
-import { MulterError } from "multer";
+import type mongoose from "mongoose"; 
 import { ZodError } from "zod";
 
 export const errorHandler: ErrorRequestHandler = (
@@ -41,31 +39,6 @@ export const errorHandler: ErrorRequestHandler = (
 			},
 		];
 		errorResponse(req, res, message, status, details, bodyStatus);
-	} else if (error instanceof MulterError) {
-		const message = error.code;
-		let issue: string = error.code;
-		const status = 400;
-		switch (error.code) {
-			case "LIMIT_UNEXPECTED_FILE":
-				issue = "Invalid file type";
-				break;
-			case "LIMIT_FILE_COUNT":
-				issue = "File count exceeded";
-				break;
-			case "LIMIT_FILE_SIZE":
-				issue = `File size exceeded (${env.FILE_SIZE_LIMIT} MB)`;
-				break;
-			default:
-				issue = error.code;
-				break;
-		}
-		const details = [
-			{
-				field: req.url.split("/")[3],
-				issue: issue,
-			},
-		];
-		errorResponse(req, res, message, status, details);
 	} else if (error.name === "ValidationError") {
 		const message = "Validation error";
 		const status = 400;
