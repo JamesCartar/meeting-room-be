@@ -7,7 +7,6 @@ export const EnvSchema = z
 		MONGODB_URI: z.string().min(1, "MONGODB_URI is required"),
 		JWT_SECRET: z.string().min(10, "JWT_SECRET must be at least 10 characters"),
 		JWT_EXPIRATION_TIME: z.coerce.number().int().positive().default(3600),
-		OTP_EXPIRATION_TIME: z.coerce.number().int().positive().default(300),
 		PASSWORD_SALT_ROUNDS: z.coerce.number().int().positive().default(10),
 		TRUSTED_ORIGINS: z.preprocess(
 			(val) => {

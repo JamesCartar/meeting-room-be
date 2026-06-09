@@ -1,0 +1,3015 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Default module",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "login",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "email": "zawzaw@gmail.com",
+                    "password": "yellow123"
+                  },
+                  "summary": "default"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "401 Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "801": {
+                    "summary": "801",
+                    "value": {
+                      "success": false,
+                      "status": 801,
+                      "message": "Unauthenticated error",
+                      "details": [
+                        {
+                          "field": "auth",
+                          "issue": "Incorrect credentials"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "401 Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "status",
+                    "message",
+                    "details"
+                  ]
+                },
+                "examples": {
+                  "2": {
+                    "summary": "429",
+                    "value": {
+                      "success": false,
+                      "status": 429,
+                      "message": "Too Many Request Error",
+                      "details": [
+                        {
+                          "field": "auth",
+                          "issue": "Too many requests. Please try again after 5 second."
+                        }
+                      ]
+                    }
+                  },
+                  "401": {
+                    "summary": "401",
+                    "value": {
+                      "success": false,
+                      "status": 401,
+                      "message": "Unauthenticated error",
+                      "details": [
+                        {
+                          "field": "auth",
+                          "issue": "Your account is temporarily suspended"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/admins": {
+      "post": {
+        "summary": "create admin",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "name": "mg mg",
+                "email": "mgmg@gmail.com",
+                "role": "507f1f77bcf86cd799439100",
+                "password": "1234323",
+                "status": "active"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201 Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "201": {
+                    "summary": "201",
+                    "value": {
+                      "success": true,
+                      "message": "Admin created successfully",
+                      "status": 201,
+                      "data": {
+                        "_id": "69c9f8678ebab25323105555"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "403": {
+                    "summary": "403",
+                    "value": {
+                      "success": false,
+                      "status": 403,
+                      "message": "Permission denied",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Not authorized to visit this route"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get admin list",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search by name or email",
+            "required": false,
+            "example": "zaw zaw",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "active or suspend",
+            "required": false,
+            "example": "active",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "role id",
+            "required": false,
+            "example": "507f1f77bcf86cd799439102",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdBefore",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "2025-03-04",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdAfter",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "2025-03-04",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "5",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "admins": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "foundCount": {
+                              "type": "integer"
+                            },
+                            "totalCount": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "limit": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "fileLocation": {
+                          "type": "object",
+                          "properties": {
+                            "admin": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Get admin list successfully",
+                      "status": 200,
+                      "data": {
+                        "admins": [
+                          {
+                            "_id": "69d46a9b5b8a373dcc09dabc",
+                            "username": "Zaw Htet",
+                            "email": "zawhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-04-07T02:23:23.907Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a1",
+                            "username": "Hein Htet",
+                            "email": "heinhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-30T12:10:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a2",
+                            "username": "Kyi Thar",
+                            "email": "kyithar@cbs.com.mm",
+                            "profile": "c7e9c9e6-3ad2-46be-9a0a-def3e541562b.jpeg",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-29T08:15:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a3",
+                            "username": "Aung Aung",
+                            "email": "aungaung@gmail.com",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "suspend",
+                            "createdAt": "2026-03-28T16:40:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a4",
+                            "username": "Zaw Zaw",
+                            "email": "zawzaw@gmail.com",
+                            "profile": "cf938748-46c5-404a-86d3-3b8299f353fb.png",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-27T21:05:00.000Z"
+                          }
+                        ],
+                        "pagination": {
+                          "foundCount": 5,
+                          "totalCount": 6,
+                          "page": 1,
+                          "limit": 5
+                        },
+                        "fileLocation": {
+                          "admin": "https://cbs-dev21.s3.ap-southeast-1.amazonaws.com/contactUsMail/uploads/admins/"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Speculation-Rules": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admins/6a27178a7e6da7fe1a7186ef": {
+      "get": {
+        "summary": "get single admin",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "admin": {
+                          "type": "object",
+                          "properties": {
+                            "_id": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "profile": {
+                              "type": "string"
+                            },
+                            "role": {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "fileLocation": {
+                          "type": "object",
+                          "properties": {
+                            "admin": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Get admin data successfully",
+                      "status": 200,
+                      "data": {
+                        "admin": {
+                          "_id": "69d4656753740a2f58f962a2",
+                          "username": "Kyi Thar",
+                          "email": "kyithar@cbs.com.mm",
+                          "profile": "c7e9c9e6-3ad2-46be-9a0a-def3e541562b.jpeg",
+                          "role": {
+                            "_id": "507f1f77bcf86cd799439100",
+                            "name": "Super Admin"
+                          },
+                          "status": "active",
+                          "createdAt": "2026-03-29T08:15:00.000Z",
+                          "updatedAt": "2026-04-09T03:11:38.399Z"
+                        },
+                        "fileLocation": {
+                          "admin": "https://cbs-dev21.s3.ap-southeast-1.amazonaws.com/contactUsMail/uploads/admins/"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Speculation-Rules": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "404": {
+                    "summary": "404",
+                    "value": {
+                      "success": false,
+                      "status": 404,
+                      "message": "Not found error",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Resource not found"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "update admin",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "name": "zaw zaw",
+                "email": "zawzaw@gmail.com",
+                "role": "507f1f77bcf86cd799439100",
+                "status": "active"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admins/me": {
+      "get": {
+        "summary": "get me",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "example": {
+                  "success": true,
+                  "message": "Get current user successfully",
+                  "status": 200,
+                  "data": {
+                    "user": {
+                      "_id": "6a27178a7e6da7fe1a7186f1",
+                      "name": "aung aung",
+                      "email": "aungaung@gmail.com",
+                      "role": {
+                        "_id": "507f1f77bcf86cd799439102",
+                        "name": "User"
+                      },
+                      "status": "active",
+                      "createdAt": "2026-03-28T16:40:00.000Z",
+                      "updatedAt": "2026-06-08T19:27:06.428Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admins/6a2714e8244e91706c422ceb": {
+      "delete": {
+        "summary": "delete admin",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Admin deleted successfully",
+                      "status": 200,
+                      "data": {
+                        "_id": "69c9f8678ebab25323105555"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "404": {
+                    "summary": "404",
+                    "value": {
+                      "success": false,
+                      "status": 404,
+                      "message": "Not found error",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Resource not found"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admins/password": {
+      "patch": {
+        "summary": "change password",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "oldPassword": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "default": {
+                  "value": {
+                    "oldPassword": "yellow123",
+                    "newPassword": "yellow123"
+                  },
+                  "summary": "default"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admins/names": {
+      "get": {
+        "summary": "get admin name list",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "admins": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "foundCount": {
+                              "type": "integer"
+                            },
+                            "totalCount": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "limit": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "fileLocation": {
+                          "type": "object",
+                          "properties": {
+                            "admin": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Get admin list successfully",
+                      "status": 200,
+                      "data": {
+                        "admins": [
+                          {
+                            "_id": "69d46a9b5b8a373dcc09dabc",
+                            "username": "Zaw Htet",
+                            "email": "zawhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-04-07T02:23:23.907Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a1",
+                            "username": "Hein Htet",
+                            "email": "heinhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-30T12:10:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a2",
+                            "username": "Kyi Thar",
+                            "email": "kyithar@cbs.com.mm",
+                            "profile": "c7e9c9e6-3ad2-46be-9a0a-def3e541562b.jpeg",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-29T08:15:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a3",
+                            "username": "Aung Aung",
+                            "email": "aungaung@gmail.com",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "suspend",
+                            "createdAt": "2026-03-28T16:40:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a4",
+                            "username": "Zaw Zaw",
+                            "email": "zawzaw@gmail.com",
+                            "profile": "cf938748-46c5-404a-86d3-3b8299f353fb.png",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-27T21:05:00.000Z"
+                          }
+                        ],
+                        "pagination": {
+                          "foundCount": 5,
+                          "totalCount": 6,
+                          "page": 1,
+                          "limit": 5
+                        },
+                        "fileLocation": {
+                          "admin": "https://cbs-dev21.s3.ap-southeast-1.amazonaws.com/contactUsMail/uploads/admins/"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Speculation-Rules": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bookings": {
+      "post": {
+        "summary": "create booking",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "startTime": "2026-08-10T09:00:00.000Z",
+                "endTime": "2026-08-10T09:45:00.000Z"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201 Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "201": {
+                    "summary": "201",
+                    "value": {
+                      "success": true,
+                      "message": "Admin created successfully",
+                      "status": 201,
+                      "data": {
+                        "_id": "69c9f8678ebab25323105555"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "403 Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "403": {
+                    "summary": "403",
+                    "value": {
+                      "success": false,
+                      "status": 403,
+                      "message": "Permission denied",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Not authorized to visit this route"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "get booking list",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search by name or email",
+            "required": false,
+            "example": "zaw zaw",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "active or suspend",
+            "required": false,
+            "example": "active",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "role id",
+            "required": false,
+            "example": "507f1f77bcf86cd799439102",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdBefore",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "2025-03-04",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "createdAfter",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "2025-03-04",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "20",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "admins": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "foundCount": {
+                              "type": "integer"
+                            },
+                            "totalCount": {
+                              "type": "integer"
+                            },
+                            "page": {
+                              "type": "integer"
+                            },
+                            "limit": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "fileLocation": {
+                          "type": "object",
+                          "properties": {
+                            "admin": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Get admin list successfully",
+                      "status": 200,
+                      "data": {
+                        "admins": [
+                          {
+                            "_id": "69d46a9b5b8a373dcc09dabc",
+                            "username": "Zaw Htet",
+                            "email": "zawhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-04-07T02:23:23.907Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a1",
+                            "username": "Hein Htet",
+                            "email": "heinhtet@cbs.com.mm",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-30T12:10:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a2",
+                            "username": "Kyi Thar",
+                            "email": "kyithar@cbs.com.mm",
+                            "profile": "c7e9c9e6-3ad2-46be-9a0a-def3e541562b.jpeg",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439100",
+                              "name": "Super Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-29T08:15:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a3",
+                            "username": "Aung Aung",
+                            "email": "aungaung@gmail.com",
+                            "profile": null,
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "suspend",
+                            "createdAt": "2026-03-28T16:40:00.000Z"
+                          },
+                          {
+                            "_id": "69d4656753740a2f58f962a4",
+                            "username": "Zaw Zaw",
+                            "email": "zawzaw@gmail.com",
+                            "profile": "cf938748-46c5-404a-86d3-3b8299f353fb.png",
+                            "role": {
+                              "_id": "507f1f77bcf86cd799439101",
+                              "name": "Admin"
+                            },
+                            "status": "active",
+                            "createdAt": "2026-03-27T21:05:00.000Z"
+                          }
+                        ],
+                        "pagination": {
+                          "foundCount": 5,
+                          "totalCount": 6,
+                          "page": 1,
+                          "limit": 5
+                        },
+                        "fileLocation": {
+                          "admin": "https://cbs-dev21.s3.ap-southeast-1.amazonaws.com/contactUsMail/uploads/admins/"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Speculation-Rules": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bookings/6a2721c0fdb26a3b7461eb19": {
+      "get": {
+        "summary": "get single booking",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "admin": {
+                          "type": "object",
+                          "properties": {
+                            "_id": {
+                              "type": "string"
+                            },
+                            "username": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "profile": {
+                              "type": "string"
+                            },
+                            "role": {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "fileLocation": {
+                          "type": "object",
+                          "properties": {
+                            "admin": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Get admin data successfully",
+                      "status": 200,
+                      "data": {
+                        "admin": {
+                          "_id": "69d4656753740a2f58f962a2",
+                          "username": "Kyi Thar",
+                          "email": "kyithar@cbs.com.mm",
+                          "profile": "c7e9c9e6-3ad2-46be-9a0a-def3e541562b.jpeg",
+                          "role": {
+                            "_id": "507f1f77bcf86cd799439100",
+                            "name": "Super Admin"
+                          },
+                          "status": "active",
+                          "createdAt": "2026-03-29T08:15:00.000Z",
+                          "updatedAt": "2026-04-09T03:11:38.399Z"
+                        },
+                        "fileLocation": {
+                          "admin": "https://cbs-dev21.s3.ap-southeast-1.amazonaws.com/contactUsMail/uploads/admins/"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "alt-svc": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Transfer-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "etag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Speculation-Rules": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Report-To": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Nel": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "cf-cache-status": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Server": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "CF-RAY": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "x-powered-by": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Encoding": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "404": {
+                    "summary": "404",
+                    "value": {
+                      "success": false,
+                      "status": 404,
+                      "message": "Not found error",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Resource not found"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bookings/6a2723978bc8c59a63250279": {
+      "delete": {
+        "summary": "delete booking",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "summary": "200",
+                    "value": {
+                      "success": true,
+                      "message": "Admin deleted successfully",
+                      "status": 200,
+                      "data": {
+                        "_id": "69c9f8678ebab25323105555"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string"
+                          },
+                          "issue": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "404": {
+                    "summary": "404",
+                    "value": {
+                      "success": false,
+                      "status": 404,
+                      "message": "Not found error",
+                      "details": [
+                        {
+                          "field": "admins",
+                          "issue": "Resource not found"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Content-Length": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Content-Type": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Connection": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Powered-By": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Date": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Keep-Alive": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "ETag": {
+                "required": false,
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "health check",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": [],
+  "security": []
+}
