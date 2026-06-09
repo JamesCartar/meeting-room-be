@@ -49,6 +49,10 @@ class AdminService {
 		};
 		return response;
 	}
+	async getNames() {
+		const users = await this.adminRepository.getNames();
+		return { users };
+	}
 	async getSingle(req: Request) {
 		const { id } = req.params;
 

@@ -14,6 +14,10 @@ class AdminController {
 		const data = await this.adminService.getAll(req);
 		return successResponse(res, "Get admin list successfully", data);
 	}
+	async getNames(_req: Request, res: Response) {
+		const data = await this.adminService.getNames();
+		return successResponse(res, "Get user names successfully", data);
+	}
 	async getSingle(req: Request, res: Response) {
 		const data = await this.adminService.getSingle(req);
 		return successResponse(res, "Get admin data successfully", data);

@@ -65,8 +65,6 @@ class BookingService {
 		return {
 			bookings,
 			pagination,
-			timeAssumption:
-				"All booking times are stored as UTC Date values. API inputs must include timezone offsets.",
 		};
 	}
 

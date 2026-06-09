@@ -57,6 +57,13 @@ router
 	]);
 
 router
+	.route("/names")
+	.get([
+		requireAccess("user:read"),
+		controllerAsyncHandler((req, res) => adminController.getNames(req, res)),
+	]);
+
+router
 	.route("/:id")
 	.get([
 		requireAccess("user:read"),

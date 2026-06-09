@@ -7,7 +7,25 @@ import type {
 	AdminCreateInput,
 	AdminUpdateInput,
 } from "@validators/schemas/admin.schema";
-import type { ClientSession, QueryFilter } from "mongoose";
+import { Types, type ClientSession, type QueryFilter } from "mongoose";
+
+const castAdminAggregateFilters = (
+	filters: QueryFilter<AdminSchemaType>,
+): QueryFilter<AdminSchemaType> => {
+	const castedFilters = { ...filters };
+
+	if (typeof castedFilters.role === "string") {
+		castedFilters.role = new Types.ObjectId(castedFilters.role);
+	}
+
+	if (Array.isArray(castedFilters.$and)) {
+		castedFilters.$and = castedFilters.$and.map((condition) =>
+			castAdminAggregateFilters(condition as QueryFilter<AdminSchemaType>),
+		);
+	}
+
+	return castedFilters;
+};
 
 class AdminRepository {
 	async create(data: AdminCreateInput) {
@@ -15,20 +33,67 @@ class AdminRepository {
 		return admin;
 	}
 	async getAll(filters: QueryFilter<AdminSchemaType>, pagination: Pagination) {
-		const admins = await Admin.find(filters, {
-			password: 0,
-			__v: 0,
-			updatedAt: 0,
-		})
-			.populate({
-				path: "role",
-				select: "_id name",
-			})
-			.sort({ createdAt: "descending" })
-			.skip(pagination.limit * pagination.page)
-			.limit(pagination.limit);
+		const admins = await Admin.aggregate([
+			{ $match: castAdminAggregateFilters(filters) },
+			{ $sort: { createdAt: -1 } },
+			{ $skip: pagination.limit * pagination.page },
+			{ $limit: pagination.limit },
+			{
+				$lookup: {
+					from: "roles",
+					localField: "role",
+					foreignField: "_id",
+					as: "role",
+				},
+			},
+			{ $unwind: "$role" },
+			{
+				$lookup: {
+					from: "bookings",
+					let: { adminId: "$_id" },
+					pipeline: [
+						{ $match: { $expr: { $eq: ["$user", "$$adminId"] } } },
+						{ $count: "count" },
+					],
+					as: "bookingCountResult",
+				},
+			},
+			{
+				$set: {
+					bookingCount: {
+						$ifNull: [{ $first: "$bookingCountResult.count" }, 0],
+					},
+				},
+			},
+			{
+				$project: {
+					password: 0,
+					__v: 0,
+					updatedAt: 0,
+					bookingCountResult: 0,
+					"role.description": 0,
+					"role.type": 0,
+					"role.createdAt": 0,
+					"role.updatedAt": 0,
+					"role.__v": 0,
+				},
+			},
+		]);
 
 		return admins;
+	}
+	async getNames() {
+		const users = await Admin.find(
+			{},
+			{
+				_id: 1,
+				name: 1,
+			},
+		)
+			.sort({ name: "ascending" })
+			.lean();
+
+		return users;
 	}
 	async getCount(filters: QueryFilter<AdminSchemaType>) {
 		const count = await Admin.countDocuments(filters);

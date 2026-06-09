@@ -4,7 +4,7 @@ import { ROLE_IDS } from "./ids.constant";
 const roleSeeds = [
 	{
 		_id: ROLE_IDS.ADMIN,
-		name: "Super Admin",
+		name: "Admin",
 		description: "Full system access",
 		type: "system",
 	},
